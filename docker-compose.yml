@@ -1,8 +1,8 @@
 services:
 
   backend:
-    image: back-{{ name }}
-    hostname: back-{{ name }}
+    image: back-just_finance
+    hostname: back-just_finance
     build:
       context: ./
       dockerfile: Dockerfile
@@ -42,8 +42,8 @@ services:
       context: ./frontend
       args:
         NUXT_PUBLIC_PATH: http://localhost/static/
-    image: front-{{ name }}
-    hostname: front-{{ name }}
+    image: front-just_finance
+    hostname: front-just_finance
     command: npm run dev
     network_mode: "host"
     expose:
