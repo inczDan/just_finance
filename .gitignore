@@ -5,7 +5,7 @@ dkdata
 coverage.xml
 htmlcov/
 .idea
-/{{name}}.log
+/just_finance.log
 /static
 
 /apimock/node_modules

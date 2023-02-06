@@ -10,9 +10,9 @@ services:
   apimock:
     build:
       context: ./apimock
-    image: apimock-{{ name }}
-    container_name: apimock-{{ name }}
-    hostname: apimock-{{ name }}
+    image: apimock-just_finance
+    container_name: apimock-just_finance
+    hostname: apimock-just_finance
     command: npm run apimock:watch
     network_mode: "host"
     expose:

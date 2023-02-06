@@ -1,4 +1,4 @@
-name: {{ name }} CI
+name: just_finance CI
 
 on:
   push:

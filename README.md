@@ -20,7 +20,7 @@ dkup  # Brings up everything
 With `dkup` running, open another terminal
 
 ```bash
-dk bash  # starts bash inside "{{name}}" container
+dk bash  # starts bash inside "just_finance" container
 ./manage.py migrate  # create database tables and stuff
 ./manage.py createsuperuser  # creates an application user in the database
 ```
@@ -29,10 +29,10 @@ What is happenning:
 
 * `dev.sh` is a collection of useful bash functions for this project's development environment. You're encouraged to look inside and see how that works, and add more as the project progresses.
 * `dknpminstall` will start a docker container and run `npm install` inside to download node dependencies to the `frontend/node_modules` folder. Using docker for this means you don't need to worry about installing (and choosing version for) node/npm.
-* `dkup` uses docker-compose to start 3 containers: postgres, nginx, and {{name}}.
+* `dkup` uses docker-compose to start 3 containers: postgres, nginx, and just_finance.
 * The dockerized postgres saves its state into `docker/dkdata`. You can delete that if you want your dev database to go kaboom.
-* Once `dkup` is running, `dk <command>` will run `<command>` inside the `{{name}}` container. So `dk bash` will get you "logged in" as root inside that container. Once inside, you need to run Django's `manage.py` commands to initialize the database properly.
-* The {{name}} container runs 3 services:
+* Once `dkup` is running, `dk <command>` will run `<command>` inside the `just_finance` container. So `dk bash` will get you "logged in" as root inside that container. Once inside, you need to run Django's `manage.py` commands to initialize the database properly.
+* The just_finance container runs 3 services:
  * django on port 8000
  * nuxt frontend with real APIs on port 3000
  * nuxt frontend with mock APIs on port 3001
@@ -59,7 +59,7 @@ dkpgnginx  # Starts postgres and nginx inside docker
 With `dkpgnginx` running, start another terminal:
 
 ```bash
-mkvirtualenv {{name}} -p python3  # creates a python3 virtualenv
+mkvirtualenv just_finance -p python3  # creates a python3 virtualenv
 pip install -r requirements.txt  # install python dependencies inside virtualenv
 export DJANGO_DB_PORT=5431  # That's where our dockerized postgres is listening
 ./manage.py runserver  # starts django on port 8000
