@@ -1,0 +1,72 @@
+# Query: app1
+# Including: finance
+# Excluding: app1
+# ContextLines: 1
+
+23 resultados - 9 arquivos
+
+template/finance/finance/accounts/apps.py:
+  5      default_auto_field = 'django.db.models.BigAutoField'
+  6:     name = 'finance.accounts'
+  7  
+
+template/finance/finance/accounts/tests/fixtures.py:
+  1: from finance.tasks.models import User
+  2  
+
+template/finance/finance/accounts/tests/test_auth_api.py:
+  1: from finance.accounts.models import User
+  2  from . import fixtures
+
+template/finance/finance/base/apps.py:
+  5      default_auto_field = "django.db.models.BigAutoField"
+  6:     name = "finance.base"
+
+template/finance/finance/finance/settings.py:
+    1  """
+    2: Django settings for finance project.
+    3  
+
+   55  LOCAL_APPS = [
+   56:     "finance.base",
+   57:     "finance.accounts",
+   58:     "finance.tasks",
+   59  ]
+
+   72  
+   73: ROOT_URLCONF = "finance.finance.urls"
+   74  
+
+   90  
+   91: WSGI_APPLICATION = "finance.finance.wsgi.application"
+   92  
+
+  174  #             'class': 'logging.FileHandler',
+  175: #             'filename': os.getenv('DJANGO_LOG_FILE', './finance.log'),
+  176  #             'formatter': 'simple'
+
+template/finance/finance/finance/urls.py:
+  21      # path('explorer/', include('explorer.urls')),
+  22:     path("api/", include("finance.base.urls")),
+  23:     path("api/accounts/", include("finance.accounts.urls")),
+  24:     path("api/tasks/", include("finance.tasks.urls")),
+  25  ]
+
+template/finance/finance/finance/wsgi.py:
+   1  """
+   2: WSGI config for finance project.
+   3  
+
+  13  
+  14: os.environ.setdefault("DJANGO_SETTINGS_MODULE", "finance.finance.settings")
+  15  
+
+template/finance/finance/tasks/apps.py:
+  5      default_auto_field = "django.db.models.BigAutoField"
+  6:     name = "finance.tasks"
+
+template/finance/finance/tasks/tests/test_todos.py:
+  1: from finance.accounts.models import User
+  2: from finance.accounts.tests import fixtures
+  3: from finance.tasks.models import Todo
+  4  

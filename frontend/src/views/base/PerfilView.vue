@@ -1,0 +1,76 @@
+<template>
+    <!-- <template> -->
+        <v-col cols="1">
+        <v-btn
+            block
+            size="small"
+            rounded="pill"
+            color="blue"
+            :to="{name: 'base-casinha'}"
+            @click="login">
+            <v-icon>mdi-arrow-left</v-icon>
+          </v-btn>
+        </v-col>
+    <!-- </template> -->
+  <v-container>
+    <v-row align="center" no-gutters>
+      <v-col cols="12" class="d-flex align-center justify-center">
+        <v-img
+          class="circulo-foto"
+          :src="profilePicture"
+        />
+      </v-col>
+      <v-col cols="12" class="d-flex align-center justify-center mt-5">
+        <input type="file" accept="image/jpeg" @change="sobeFoto" />
+      </v-col>
+    </v-row>
+        <br><br><br>
+        <v-row align="center" no-gutters>
+            <v-col cols="12"></v-col>
+        </v-row>
+      <v-col class="d-flex align-center justify-center">
+        <v-card class="elevation-12">
+          <v-card-title class="headline">Nome:{{ userName }} Daniel Alves Matos</v-card-title>
+          <v-card-text>
+            <p>Email: {{ userEmail }} daniel.matos@gmail.com</p>
+          </v-card-text>
+        </v-card>
+      </v-col>
+  </v-container>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      userName: '',
+      userEmail: '',
+      profilePicture: ''
+    };
+  },
+  methods: {
+    sobeFoto(event) {
+      const input = event.target;
+      if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          this.profilePicture = e.target.result;
+        };
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+  }
+};
+</script>
+
+<style scoped>
+.circulo-foto {
+  border-radius: 50%;
+  object-fit: cover;
+  width:220px;
+  height:220px;
+}
+</style>
+
+
+
