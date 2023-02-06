@@ -49,7 +49,7 @@
             </v-expand-transition>
             </v-col>
         </v-row>
-        <v-row class="mt-5">
+        <v-row class="mt-5">app1
             <v-col cols="12" class="d-flex align-center justify-center">
             Aqui você pode visualizar os resumos das suas anotações com gráficos.
             </v-col>

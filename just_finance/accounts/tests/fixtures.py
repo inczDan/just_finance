@@ -1,4 +1,4 @@
-from app1.tasks.models import User
+from just_finance.tasks.models import User
 
 
 def user_jon():

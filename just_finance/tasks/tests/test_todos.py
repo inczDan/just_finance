@@ -1,6 +1,6 @@
-from app1.accounts.models import User
-from app1.accounts.tests import fixtures
-from app1.tasks.models import Todo
+from just_finance.accounts.models import User
+from just_finance.accounts.tests import fixtures
+from just_finance.tasks.models import Todo
 
 
 def test_criar_tarefa_sem_login(client):

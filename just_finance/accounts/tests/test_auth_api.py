@@ -1,4 +1,4 @@
-from app1.accounts.models import User
+from just_finance.accounts.models import User
 from . import fixtures
 
 
