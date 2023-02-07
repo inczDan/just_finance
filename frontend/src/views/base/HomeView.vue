@@ -1,24 +1,22 @@
 <template>
   <v-container class="fill-height">
     <v-responsive class="d-flex align-center text-center fill-height">
-      <v-img contain height="240" src="@/assets/logo.svg" />
+      <v-img contain height="240" src="@/assets/finance.png" />
       <blockquote class="blockquote text-h5">
-        &#8220;Primeiro, resolva o problema. Depois, escreva o código.&#8221;
+        <h1 class="text-h2 font-weight-bold">Just Finance</h1>
+        <br>
+        &#8220;Controle o mundo, começando pelo seu bolso.&#8221;
         <footer>
           <small>
-            <em>&mdash; John Johnson &mdash;</em>
+            <em>&mdash; Daniel A. Matos &mdash;</em>
           </small>
         </footer>
       </blockquote>
 
-      <div class="text-body-1 mb-n1 pt-4">Bem-vindo ao template</div>
-      <h1 class="text-h2 font-weight-bold">Djàvue</h1>
-      <code>Vue3 + Vuetify + Vite</code>
-
-      <div class="py-6" />
-
-      <v-row class="d-flex align-center justify-center">
-        <v-col cols="auto">
+      <div class="text-body-1 mb-n1 pt-4">Bem-vindo(a) à sua mais nova jornada </div>
+      <div class="py-6 ajuste-btn" />
+      <v-row class="d-flex align-center justify-center ">
+        <v-col cols="auto" class="ajuste-btn">
           <v-btn
             color="primary"
             :to="{ name: 'base-getstarted' }"
@@ -27,8 +25,8 @@
             size="x-large"
             variant="flat"
             class="my-4">
-            <v-icon icon="mdi-speedometer" size="large" start />
-            Get Started
+            <v-icon icon="mdi-form-select" size="large" start />
+            Cadastre-se
           </v-btn>
           <v-btn
             v-if="!loggedUser"
@@ -81,3 +79,12 @@ export default {
   },
 }
 </script>
+
+<style>
+.ajuste-btn{
+  display: flex;
+  width:550px;
+  justify-content: space-evenly;
+  max-width: 68%;
+}
+</style>
