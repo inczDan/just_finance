@@ -22,13 +22,14 @@
             required
             @keyup.enter="login"></v-text-field>
 
+            <!-- tenho que colocar o @click pra executar o login correto -->
           <v-btn
             block
             size="large"
             rounded="pill"
             color="blue"
             append-icon="mdi-chevron-right"
-            @click="login">
+            :to="{ name: 'base-casinha'}">
             Login
           </v-btn>
           <v-btn
@@ -38,7 +39,7 @@
             rounded="pill"
             color="blue"
             variant="outlined"
-            :to="{ name: 'base-home' }">
+            :to="{ name: 'tasks-list' }">
             Início
           </v-btn>
         </v-form>
@@ -107,7 +108,7 @@ export default {
       }
     },
     showTasks() {
-      this.$router.push({ name: 'base-casinha' })
+      this.$router.push({ name: 'tasks-list' })
       console.log("--> tasks")
     },
   },

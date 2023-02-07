@@ -38,7 +38,7 @@
                     <v-list-item @click="visuPerfil">
                         <v-list-item-title>Perfil</v-list-item-title>
                     </v-list-item>
-                    <v-list-item @click="logout">
+                    <v-list-item @click="logoutUser">
                         <v-list-item-title>Deslogar</v-list-item-title>
                     </v-list-item>
                 </v-list>
@@ -78,12 +78,11 @@
             toggleAnotation(){
                 this.showNovaAnotation = !this.showNovaAnotation;
             },
-            logout() {
-
-                this.$router.push('/logout')
+            logoutUser() {
+                this.$router.push("accounts/logout")
             },
             visuPerfil(){
-                this.$router.push('/perfil')
+                this.$router.push("profile")
             },
         },
     };

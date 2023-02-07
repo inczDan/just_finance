@@ -2,21 +2,22 @@
   <v-container>
     <v-row align="start" no-gutters style="height: 150px">
       <v-col cols="12">
+        <v-img contain height="240" src="@/assets/finance.png" />
         <v-card class="text-center">
-          <v-card-title class="headline"> Bye Bye </v-card-title>
+          <p class="headline"> Estaremos ansiosos pela sua próxima visita! </p>
           <v-card-text>
-            <h2>Finalizar sessão?</h2>
-            <p class="ma-4">
-              <v-btn :loading="loading" color="primary" class="mr-4" x-large block @click="logout">
+            <h2>Tem certeza que deseja finalizar sessão?</h2>
+            <p class="ma-10">
+              <v-btn :loading="loading" color="blue" class="mr-2" small block @click="logout">
                 SIM
               </v-btn>
               <v-btn
                 class="my-2"
                 block
-                color="primary"
+                color="blue"
                 variant="outlined"
-                :to="{ name: 'base-home' }">
-                Início
+                :to="{ name: 'base-casinha' }">
+                Voltar
               </v-btn>
             </p>
           </v-card-text>

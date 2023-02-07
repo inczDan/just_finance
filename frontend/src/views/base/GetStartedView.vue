@@ -8,7 +8,7 @@
           <v-form ref="form">
         <v-text-field
           label="Nome"
-          v-model="username"
+          v-model="name"
           :rules="nameRules"
         />
         <v-text-field
@@ -46,7 +46,7 @@ import axios from 'axios';
 
 export default {
   data: () => ({
-    username: '',
+    name: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -71,7 +71,7 @@ export default {
         try {
           // lembrar desse endpoint na hora do django
           const response = await axios.post('/api/register', {
-            username: this.username,
+            name: this.name,
             email: this.email,
             password: this.password,
           });
