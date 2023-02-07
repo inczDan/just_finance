@@ -8,7 +8,7 @@
           <v-form ref="form">
         <v-text-field
           label="Nome"
-          v-model="name"
+          v-model="username"
           :rules="nameRules"
         />
         <v-text-field
@@ -30,7 +30,7 @@
         />
         <v-card-actions></v-card-actions>
         <div class="ajuste-btn">
-          <v-btn @click="register" :to="{name: 'accounts-login'}" color="blue"> Registrar </v-btn>
+          <v-btn @click="resgister"  :to="{name: 'accounts-login'}" color="blue"> Registrar </v-btn>
           <v-btn color="blue" :to="{ name: 'base-home' }"> Início </v-btn>
         </div>
         <hr class="my-3" />
@@ -46,19 +46,19 @@ import axios from 'axios';
 
 export default {
   data: () => ({
-    name: '',
+    username: '',
     email: '',
     password: '',
     confirmPassword: '',
     nameRules: [
-      name => !!name || 'Nome é obrigatório',
+      v => !!v || 'Nome é obrigatório',
     ],
     emailRules: [
       email => !!email || 'Email é obrigatório',
       v => /.+@.+\..+/.test(v) || 'Email inválido',
     ],
     passwordRules: [
-      password => !!password || 'Senha é obrigatória',
+      v => !!v || 'Senha é obrigatória',
     ],
     confirmPasswordRules: [
       v => !!v || 'Confirme a senha',
@@ -71,10 +71,11 @@ export default {
         try {
           // lembrar desse endpoint na hora do django
           const response = await axios.post('/api/register', {
-            username: this.name,
+            username: this.username,
             email: this.email,
-            password: this.password
+            password: this.password,
           });
+          this.$router.push({ name: "accounts-login" });
         } catch(error){
 
         }

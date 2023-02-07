@@ -7,7 +7,7 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer />
-        <v-btn color="primary" text @click="close"> Fechar </v-btn>
+        <v-btn color="blue" text @click="close"> Fechar </v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>

@@ -13,7 +13,7 @@
         </footer>
       </blockquote>
 
-      <div class="text-body-1 mb-n1 pt-4">Bem-vindo(a) à sua mais nova jornada </div>
+      <div class="text-body-1 mb-n1 pt-4">Bem-vindo(a) a sua mais nova jornada </div>
       <div class="py-6 ajuste-btn" />
       <v-row class="d-flex align-center justify-center ">
         <v-col cols="auto" class="ajuste-btn">

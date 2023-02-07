@@ -1,5 +1,11 @@
     <template>
-        <v-container class="fill-height" >
+        <v-col cols="12" class="d-flex align-center justify-center">
+            <v-img class="ajuste-img" contain height="240" src="@/assets/finance.png" />
+            </v-col>
+        <v-container class="ajuste-grafico fill-height align-start" >
+            
+            
+        
         <v-row>
             <v-col cols="3" class="d-flex align-center justify-center">
                 <v-menu offset-y v-model="showNovaAnotation">
@@ -18,39 +24,32 @@
                 </v-list>
             </v-menu>
             </v-col>
-            <v-col cols="6" class="d-flex align-center justify-center">
-            <v-img contain height="240" src="@/assets/finance.png" />
-            </v-col>
-            <v-col cols="3" class="d-flex  justify-center">
-            <v-hover>
-                <v-btn class="profile-btn" @click="toggleProfile" color="blue">
-                    <v-icon>mdi-account</v-icon>
-                </v-btn>
-            </v-hover>
-            <v-expand-transition>
-                <div v-if="showProfile">
-                <v-card>
-                    <v-card-title class="headline" >*Nome usuario*</v-card-title>
-                    <v-list-item>
-                    <v-btn
-                    :to="{name: 'base-perfil'}"
-                    @click="visuPerfil">
-                    Perfil
-                    </v-btn>
-                    <br>
-                    <v-btn
-                    :to="{name: 'base-home'}"
-                    @click="logout">
-                        Deslogar
-                    </v-btn>
+            
+        <v-col cols="3" class="d-flex align-center justify-center">
+            <v-btn @click="toggleProfile" color="blue" class="profile-btn">
+                <v-icon>mdi-account</v-icon>
+            </v-btn>
+            <div v-if="showProfile" style="width:200px">
+                <v-card class="caixinha-btn">
+                <v-card-title class="headline">*nome usuario*</v-card-title>
+                <v-card-actions>
+    
+                <v-list >
+                    <v-list-item @click="visuPerfil">
+                        <v-list-item-title>Perfil</v-list-item-title>
                     </v-list-item>
+                    <v-list-item @click="logout">
+                        <v-list-item-title>Deslogar</v-list-item-title>
+                    </v-list-item>
+                </v-list>
+                </v-card-actions>
                 </v-card>
-                </div>
-            </v-expand-transition>
-            </v-col>
+            </div>
+        </v-col>
+
         </v-row>
-        <v-row class="mt-5">app1
-            <v-col cols="12" class="d-flex align-center justify-center">
+        <v-row >
+            <v-col cols="10" >
             Aqui você pode visualizar os resumos das suas anotações com gráficos.
             </v-col>
         </v-row>
@@ -80,8 +79,7 @@
                 this.showNovaAnotation = !this.showNovaAnotation;
             },
             logout() {
-                // Remover o usuário da sessão
-                // Redirecionar para a página de login
+
                 this.$router.push('/logout')
             },
             visuPerfil(){
@@ -90,6 +88,7 @@
         },
     };
     </script>
+
     <style>
     .options-btn {
         position:absolute;
@@ -101,5 +100,17 @@
         position: absolute;
         top: 20px;
         right: 20px;
+    }
+    .caixinha-btn {
+        position: absolute;
+        top: 15px;
+        right: 100px;
+    }
+    .ajuste-img{
+        width:97%
+    }
+    .ajuste-graficos{
+        display:flex;
+        align-items: flex-start;
     }
     </style>
