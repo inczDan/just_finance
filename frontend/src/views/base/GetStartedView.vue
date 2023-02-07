@@ -1,76 +1,95 @@
 <template>
   <v-container class="fill-height">
     <v-responsive class="d-flex align-center text-center fill-height">
-      <v-img contain height="240" src="@/assets/logo.svg" />
-
+      <v-img contain height="240" src="@/assets/finance.png" />
       <v-card>
-        <v-card-title class="headline">Template de App Djàvue </v-card-title>
+        <v-card-title class="headline">Realize seu cadastro </v-card-title>
         <v-card-text>
-          <p>
-            Djávue tem Vue 3 + Vuetify 3 no frontend e Django no Backend, tudo já configurado e
-            pronto para uso em Produção.
-          </p>
-          <h3 class="pt-6">Links úteis:</h3>
-          <v-btn
-            href="https://github.com/huogerac/djavue/"
-            min-width="164"
-            rel="noopener noreferrer"
-            target="_blank"
-            variant="text">
-            <v-icon icon="mdi-arrow-top-right-bold-box-outline" size="large" start />
-            Código deste template
-          </v-btn>
-          <v-btn
-            href="https://next.vuetifyjs.com/en/introduction/why-vuetify/#feature-guides/"
-            min-width="164"
-            rel="noopener noreferrer"
-            target="_blank"
-            variant="text">
-            <v-icon icon="mdi-semantic-web" size="large" start />
-            Vuetify
-          </v-btn>
-          <v-btn
-            href="https://next.vuetifyjs.com/components/all/"
-            min-width="164"
-            rel="noopener noreferrer"
-            target="_blank"
-            variant="text">
-            <v-icon icon="mdi-view-dashboard" size="large" start />
-            Components
-          </v-btn>
-
-          <v-btn
-            href="https://community.vuetifyjs.com/"
-            min-width="164"
-            rel="noopener noreferrer"
-            target="_blank"
-            variant="text">
-            <v-icon icon="mdi-account-group" size="large" start />
-            Community
-          </v-btn>
-          <p class="pt-6">
-            Achou um problema? Cadastre uma
-            <a
-              href="https://github.com/huogerac/djavue/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="contribute">
-              Issue aqui </a
-            >.
-          </p>
-          <p>Obrigado por utilizar este template.</p>
-          <div class="text-xs-right">
-            <em><small>&mdash; Enzo Pascal 🎩</small></em>
-          </div>
-          <hr class="my-3" />
+          <v-form ref="form">
+        <v-text-field
+          label="Nome"
+          v-model="name"
+          :rules="nameRules"
+        />
+        <v-text-field
+          label="Email"
+          v-model="email"
+          :rules="emailRules"
+        />
+        <v-text-field
+          label="Senha"
+          type="password"
+          v-model="password"
+          :rules="passwordRules"
+        />
+        <v-text-field
+          label="Confirme a Senha"
+          type="password"
+          v-model="confirmPassword"
+          :rules="confirmPasswordRules"
+        />
+        <v-card-actions></v-card-actions>
+        <div class="ajuste-btn">
+          <v-btn @click="register" :to="{name: 'accounts-login'}" color="blue"> Registrar </v-btn>
+          <v-btn color="blue" :to="{ name: 'base-home' }"> Início </v-btn>
+        </div>
+        <hr class="my-3" />
+      </v-form>
         </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn color="primary" :to="{ name: 'base-home' }"> Início </v-btn>
-        </v-card-actions>
       </v-card>
     </v-responsive>
   </v-container>
 </template>
 
-<script setup></script>
+<script>
+import axios from 'axios';
+
+export default {
+  data: () => ({
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    nameRules: [
+      name => !!name || 'Nome é obrigatório',
+    ],
+    emailRules: [
+      email => !!email || 'Email é obrigatório',
+      v => /.+@.+\..+/.test(v) || 'Email inválido',
+    ],
+    passwordRules: [
+      password => !!password || 'Senha é obrigatória',
+    ],
+    confirmPasswordRules: [
+      v => !!v || 'Confirme a senha',
+      v => v === this.password || 'Senhas não coincidem',
+    ],
+  }),
+  methods: {
+    async register() {
+      if (this.$refs.form.validate()) {
+        try {
+          // lembrar desse endpoint na hora do django
+          const response = await axios.post('/api/register', {
+            username: this.name,
+            email: this.email,
+            password: this.password
+          });
+        } catch(error){
+
+        }
+      }
+    },
+  },
+};
+</script>
+
+<style>
+.ajuste-btn{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
+  width:100%;
+  max-width: 100%;
+}
+</style>

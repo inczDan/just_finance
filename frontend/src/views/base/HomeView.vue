@@ -1,7 +1,7 @@
 <template>
   <v-container class="fill-height">
     <v-responsive class="d-flex align-center text-center fill-height">
-      <v-img contain height="240" src="@/assets/finance.png" />
+      
       <blockquote class="blockquote text-h5">
         <h1 class="text-h2 font-weight-bold">Just Finance</h1>
         <br>
@@ -18,7 +18,7 @@
       <v-row class="d-flex align-center justify-center ">
         <v-col cols="auto" class="ajuste-btn">
           <v-btn
-            color="primary"
+            color="blue"
             :to="{ name: 'base-getstarted' }"
             min-width="228"
             rel="noopener noreferrer"
@@ -30,7 +30,7 @@
           </v-btn>
           <v-btn
             v-if="!loggedUser"
-            color="primary"
+            color="blue"
             min-width="228"
             rel="noopener noreferrer"
             size="x-large"
@@ -42,7 +42,7 @@
           </v-btn>
           <v-btn
             v-else
-            color="primary"
+            color="blue"
             min-width="228"
             rel="noopener noreferrer"
             size="x-large"
@@ -53,7 +53,7 @@
           </v-btn>
           <v-btn
             v-if="loggedUser"
-            color="primary"
+            color="blue"
             min-width="228"
             rel="noopener noreferrer"
             size="x-large"

@@ -2,6 +2,7 @@
 import EmptyLayout from "@/layouts/default/EmptyLayout.vue"
 import HomeView from "@/views/base/HomeView.vue"
 import GetStartedView from "@/views/base/GetStartedView.vue"
+import CasaView from "@/views/base/CasaView.vue"
 
 export default [
   {
@@ -18,6 +19,11 @@ export default [
         name: "base-getstarted",
         component: GetStartedView,
       },
+      {
+        path: "casinha",
+        name: "base-casinha",
+        component: CasaView,
+      }
     ],
   },
 ]

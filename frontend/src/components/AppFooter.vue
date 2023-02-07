@@ -8,17 +8,17 @@
               <v-icon>mdi-account</v-icon>
               {{ user.username }}
             </span>
-            <span class="px-5">ENV: {{ nodeEnv }}</span>
+            <v-col cols="12" align-self="center" class="pa-0 text-center">
+          <span> &copy; {{ new Date().getFullYear() }} - Just Finance </span>
+        </v-col>
+          <a 
+            href="https://api.whatsapp.com/send?phone=5511946534685&text=Preciso%20de%20suporte%20com%20o%20Just%20Finance%20por%20favor"
+            target="_blank">
+            <span class="px-5">Entre em contato</span>
+          </a>
           </div>
         </v-col>
-        <v-col cols="12" lg="6" md="6" align-self="center" class="pa-0">
-          <div class="px-5 text-grey text-center">
-            <span class="px-5">API: {{ apiBaseUrl }}</span>
-          </div>
-        </v-col>
-        <v-col cols="12" align-self="center" class="pa-0 text-center">
-          <span> &copy; {{ new Date().getFullYear() }} - Djàvue Template </span>
-        </v-col>
+       
       </v-row>
     </v-container>
   </v-footer>

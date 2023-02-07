@@ -2,6 +2,7 @@
   <v-container>
     <v-row align="center" class="mt-10" no-gutters>
       <v-col cols="12" sm="6" offset-sm="3">
+        <v-img contain height="240" src="@/assets/finance.png" />
         <v-sheet class="pa-2"> <h1>Login</h1> </v-sheet>
         <v-form>
           <v-text-field
@@ -25,8 +26,9 @@
             block
             size="large"
             rounded="pill"
-            color="primary"
+            color="blue"
             append-icon="mdi-chevron-right"
+            :to="{ name: 'base-casinha'}"
             @click="login">
             Login
           </v-btn>
@@ -35,7 +37,7 @@
             block
             size="large"
             rounded="pill"
-            color="primary"
+            color="blue"
             variant="outlined"
             :to="{ name: 'base-home' }">
             Início
