@@ -51,7 +51,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="linha in linhas" :key="linha.nome">48%
+        <tr v-for="linha in linhas" :key="linha.nome">
           <td><v-checkbox v-model="linha.selected"></v-checkbox></td>
           <td>{{ linha.nome }}</td>
           <td>{{ linha.valor }}</td>
@@ -60,10 +60,10 @@
       </tbody>
     </table>
   </div>
+  </div>
   <div class='ajusta-btn'>
   <v-btn  color="blue" @click="dialog = true">Adicionar anotação</v-btn>
     <v-btn class='btn-apagar' color="red" @click="deleteSelected">Apagar selecionados</v-btn>
-  </div>
   </div>
 </template>
 
@@ -89,7 +89,6 @@ export default {
           valor: this.valor,
           tipo: this.tipo,
         })
-
         // Limpa os campos do formulário
         this.nome = ''
         this.valor = ''
@@ -131,8 +130,13 @@ export default {
     justify-content: flex-end;
     width: 206px;
   }
-  .ajusta-btn{
-    display: flex;
-    justify-content: space-around;
+  .ajusta-btn {
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-around;
+    position: fixed;
+    bottom: 10%;
+    left:34%;
+    padding:0.5%;
   }
 </style>
