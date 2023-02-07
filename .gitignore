@@ -7,5 +7,3 @@ htmlcov/
 .idea
 /just_finance.log
 /static
-
-/apimock/node_modules

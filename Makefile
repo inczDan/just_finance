@@ -68,17 +68,6 @@ python-packages:           ## Install project dependencies (dev mode)
 install: system-packages python-packages    ## Install all dependencies
 
 
-
-.PHONY: apimock
-apimock:                ## Run Postgres for testing (using docker)
-	@docker-compose -f docker-compose.yml -f docker-compose.apimock.yml up nginx
-
-
-.PHONY: db-test-down
-apimock-down:              ## Stop Postgres (test instance)
-	@docker-compose -f docker-compose.yml -f docker-compose.apimock.yml down
-
-
 .PHONY: clean
 clean:                     ## Clean unused files
 	@find ./ -name '*.pyc' -exec rm -f {} \; 2> /dev/null
