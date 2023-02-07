@@ -17,7 +17,7 @@ export default [
         path: "novanotacao",
         name: "tasks-nova",
         component: TaskNovaView,
-      }
+      },
     ],
   },
 ]

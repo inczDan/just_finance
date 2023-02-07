@@ -29,7 +29,7 @@ export default [
         path: "profile",
         name: "base-perfil",
         component: PerfilView,
-      }
+      },
     ],
   },
 ]

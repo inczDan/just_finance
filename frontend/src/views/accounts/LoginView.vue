@@ -22,14 +22,14 @@
             required
             @keyup.enter="login"></v-text-field>
 
-            <!-- tenho que colocar o @click pra executar o login correto -->
+          <!-- tenho que colocar o @click pra executar o login correto -->
           <v-btn
             block
             size="large"
             rounded="pill"
             color="blue"
             append-icon="mdi-chevron-right"
-            :to="{ name: 'base-casinha'}">
+            :to="{ name: 'base-casinha' }">
             Login
           </v-btn>
           <v-btn
@@ -108,7 +108,7 @@ export default {
       }
     },
     showTasks() {
-      this.$router.push({ name: 'tasks-list' })
+      this.$router.push({ name: "tasks-list" })
       console.log("--> tasks")
     },
   },
