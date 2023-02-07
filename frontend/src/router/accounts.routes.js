@@ -2,6 +2,7 @@
 import EmptyLayout from "@/layouts/default/EmptyLayout.vue"
 import LoginView from "@/views/accounts/LoginView.vue"
 import LogoutView from "@/views/accounts/LogoutView.vue"
+import PerfilView from "@/views/accounts/PerfilView.vue"
 
 export default [
   {
@@ -18,6 +19,11 @@ export default [
         name: "accounts-logout",
         component: LogoutView,
       },
+      {
+        path: "perfil",
+        name: "accounts-perfil",
+        component: PerfilView,
+      }
     ],
   },
 ]

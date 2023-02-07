@@ -58,7 +58,7 @@
             rel="noopener noreferrer"
             size="x-large"
             variant="flat"
-            :to="{ name: 'tasks-list' }"
+            :to="{ name: 'base-casinha' }"
             class="my-4">
             <v-icon icon="mdi-folder-star-multiple" size="large" start />
             tarefas

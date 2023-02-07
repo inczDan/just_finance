@@ -1,6 +1,7 @@
 // Composables
 import DefaultLayout from "@/layouts/default/DefaultLayout.vue"
 import TaskListView from "@/views/tasks/TaskListView.vue"
+import TaskNovaView from "@/views/tasks/TaskNovaView.vue"
 
 export default [
   {
@@ -12,6 +13,11 @@ export default [
         name: "tasks-list",
         component: TaskListView,
       },
+      {
+        path: "novanotacao",
+        name: "tasks-nova",
+        component: TaskNovaView,
+      }
     ],
   },
 ]

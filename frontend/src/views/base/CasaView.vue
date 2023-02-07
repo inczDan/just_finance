@@ -66,11 +66,11 @@
         methods: {
             addNote() {
                 //  direciona pra pagina de criar notações
-                this.$router.push('tasks/novanota')
+                this.$router.push('/tasks/list')
             },
             viewNotes() {
                 // direciona p visualizar as anotações existentes
-                this.$router.push('/tasks')
+                this.$router.push('tasks/novanotacao')
             },
             toggleProfile() {
                 this.showProfile = !this.showProfile;
@@ -83,7 +83,7 @@
                 this.$router.push('/logout')
             },
             visuPerfil(){
-                this.$router.push('perfil')
+                this.$router.push('/perfil')
             },
         },
     };

@@ -28,7 +28,6 @@
             rounded="pill"
             color="blue"
             append-icon="mdi-chevron-right"
-            :to="{ name: 'base-casinha'}"
             @click="login">
             Login
           </v-btn>
@@ -108,7 +107,7 @@ export default {
       }
     },
     showTasks() {
-      this.$router.push({ name: "tasks-list" })
+      this.$router.push({ name: 'base-casinha' })
       console.log("--> tasks")
     },
   },
