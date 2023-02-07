@@ -9,16 +9,15 @@
               {{ user.username }}
             </span>
             <v-col cols="12" align-self="center" class="pa-0 text-center">
-          <span> &copy; {{ new Date().getFullYear() }} - Just Finance </span>
-        </v-col>
-          <a 
-            href="https://api.whatsapp.com/send?phone=5511946534685&text=Preciso%20de%20suporte%20com%20o%20Just%20Finance%20por%20favor"
-            target="_blank">
-            <span class="px-5">Entre em contato</span>
-          </a>
+              <span> &copy; {{ new Date().getFullYear() }} - Just Finance </span>
+            </v-col>
+            <a
+              href="https://api.whatsapp.com/send?phone=5511946534685&text=Preciso%20de%20suporte%20com%20o%20Just%20Finance%20por%20favor"
+              target="_blank">
+              <span class="px-5">Entre em contato</span>
+            </a>
           </div>
         </v-col>
-       
       </v-row>
     </v-container>
   </v-footer>

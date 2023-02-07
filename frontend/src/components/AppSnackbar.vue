@@ -3,6 +3,7 @@
     v-model="showSnackbar"
     :color="snackbarCollors"
     multi-line
+    timeout="500"
     location="center"
     elevation="12"
     content-class="snackbar-ft-size">
