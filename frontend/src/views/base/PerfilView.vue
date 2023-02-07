@@ -15,10 +15,12 @@
   <v-container>
     <v-row align="center" no-gutters>
       <v-col cols="12" class="d-flex align-center justify-center">
+        <v-avatar class="ma-3" size="200">
         <v-img
-          class="circulo-foto"
+          height="200px"
           :src="profilePicture"
         />
+      </v-avatar>
       </v-col>
       <v-col cols="12" class="d-flex align-center justify-center mt-5">
         <input type="file" accept="image/jpeg" @change="sobeFoto" />
@@ -63,14 +65,6 @@ export default {
 };
 </script>
 
-<style scoped>
-.circulo-foto {
-  border-radius: 50%;
-  object-fit: cover;
-  width:220px;
-  height:220px;
-}
-</style>
 
 
 

@@ -3,6 +3,7 @@
     <v-responsive class="d-flex align-center text-center fill-height">
       
       <blockquote class="blockquote text-h5">
+        <v-img class="ajuste-img" contain height="240" src="@/assets/finance.png" />
         <h1 class="text-h2 font-weight-bold">Just Finance</h1>
         <br>
         &#8220;Controle o mundo, começando pelo seu bolso.&#8221;

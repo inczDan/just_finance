@@ -66,11 +66,11 @@
         methods: {
             addNote() {
                 //  direciona pra pagina de criar notações
-                this.$router.push('/tasks/list')
+                this.$router.push('tasks/novanotacao')
             },
             viewNotes() {
                 // direciona p visualizar as anotações existentes
-                this.$router.push('tasks/novanotacao')
+                this.$router.push('/tasks/list')
             },
             toggleProfile() {
                 this.showProfile = !this.showProfile;
