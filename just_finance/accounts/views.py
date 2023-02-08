@@ -1,5 +1,5 @@
 # coding: utf-8
-
+import json
 from django.http import JsonResponse
 from django.contrib import auth
 from django.views.decorators.csrf import csrf_exempt
@@ -66,25 +66,32 @@ def _user2dict(user):
 @csrf_exempt
 def getstarted(request):
     if request.method == 'POST':
-        name = request.POST["name"]
-        email = request.POST["email"]
-        password = request.POST["password"]
+        user_input = json.loads(request.body)
+        username = user_input.get("username")
+        email = user_input.get("email")
+        password = user_input.get("password")
 
-# bisu se o email já está em uso
+        # Verificar se todos os dados foram enviados
+        if not username or not email or not password:
+            return JsonResponse({'error': 'Todos os dados são obrigatórios.'})
+
+        # bisu se o email já está em uso
         if User.objects.filter(email=email).exists():
             return JsonResponse({'error': 'Email já está sendo usado.'})
 
-# bisu se o usuário já existe
-        if User.objects.filter(username=name).exists():
+        # bisu se o usuário já existe
+        if User.objects.filter(username=username).exists():
             return JsonResponse({'error': 'Nome de usuário já existe.'})
 
         user = User.objects.create_user(
-            username=name,
+            username=username,
             email=email,
             password=make_password(password)
         )
         user.save()
-    return JsonResponse({'success': 'Usuário criado com sucesso.'})
+        return JsonResponse({'success': 'Usuário criado com sucesso.'})
+    else:
+        return JsonResponse({'error': 'Metodo não suportado.'})
 
 
 

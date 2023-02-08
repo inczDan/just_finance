@@ -38,10 +38,14 @@ export default {
         })
     })
   },
-  getregister: () => {
+  getregister: (username, email, password) => {
     return new Promise((resolve, reject) => {
       api
-        .post("/api/accounts/getstarted")
+        .post("/api/accounts/getstarted", {
+          username: username,
+          email: email,
+          password: password,
+        })
         .then((response) => {
           return resolve(response.data)
         })

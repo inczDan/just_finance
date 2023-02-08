@@ -6,7 +6,7 @@
         <v-card-title class="headline">Realize seu cadastro </v-card-title>
         <v-card-text>
           <v-form ref="form">
-            <v-text-field v-model="name" label="Nome" :rules="nameRules" />
+            <v-text-field v-model="username" label="Nome" :rules="nameRules" />
             <v-text-field v-model="email" label="Email" :rules="emailRules" />
             <v-text-field v-model="password" label="Senha" type="password" :rules="passwordRules" />
             <v-text-field
@@ -32,7 +32,7 @@ import AccountsApi from "@/api/accounts.api.js"
 
 export default {
   data: () => ({
-    name: "",
+    username: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -50,16 +50,18 @@ export default {
   methods: {
     register() {
       if (this.$refs.form.validate()) {
-        try {
-          // Lembrar desse endpoint na hora do Django
-          AccountsApi.getregister({
-            name: this.name,
-            email: this.email,
-            password: this.password,
+        AccountsApi.getregister(this.username, this.email, this.password)
+          .then((response) => {
+            if (response.error) {
+              console.error("Erro ao registrar usuário:", response.error)
+            } else if (response.success) {
+              this.$router.push({ name: "base-casinha" })
+              console.log("Usuário registrado com sucesso.")
+            }
           })
-        } catch (error) {
-          console.error("Erro ao registrar usuário:", error)
-        }
+          .catch((error) => {
+            console.error("Erro ao registrar usuário:", error)
+          })
       }
     },
   },
