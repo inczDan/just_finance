@@ -22,4 +22,5 @@ urlpatterns = [
     path("api/", include("just_finance.base.urls")),
     path("api/accounts/", include("just_finance.accounts.urls")),
     path("api/tasks/", include("just_finance.tasks.urls")),
-]
+]   
+

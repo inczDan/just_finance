@@ -48,6 +48,18 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'django.contrib.auth.accounts.TokenAuthentication',
+    ],
+}
+
+
+
 THIRD_PARTY_APPS = [
     # 'explorer',
 ]

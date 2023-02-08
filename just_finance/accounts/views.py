@@ -1,7 +1,13 @@
 # coding: utf-8
+
 from django.http import JsonResponse
 from django.contrib import auth
 from django.views.decorators.csrf import csrf_exempt
+
+from django.contrib.auth.models import User
+from django.contrib.auth.hashers import make_password
+
+
 
 from ..tasks.service import log_svc
 
@@ -55,3 +61,36 @@ def _user2dict(user):
         },
     }
     return d
+
+
+def register(request):
+    if request.method == 'POST':
+        name = request.POST["name"]
+        email = request.POST["email"]
+        password = request.POST["password"]
+
+# bisu se o email já está em uso
+        if User.objects.filter(email=email).exists():
+            return JsonResponse({'error': 'Email já está sendo usado.'})
+
+# bisu se o usuário já existe
+        if User.objects.filter(username=name).exists():
+            return JsonResponse({'error': 'Nome de usuário já existe.'})
+
+        user = User.objects.create_user(
+            username=name,
+            email=email,
+            password=make_password(password)
+        )
+        user.save()
+        log_svc.log_register(user)
+        return JsonResponse({'success': 'Usuário criado com sucesso.'})
+    return JsonResponse({'error': 'Método não permitido.'})
+
+
+
+
+
+
+# def danielzin(request):
+#     return JsonResponse({"nome": "daniel"})

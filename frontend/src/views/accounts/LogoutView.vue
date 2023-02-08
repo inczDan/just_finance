@@ -4,7 +4,7 @@
       <v-col cols="12">
         <v-img contain height="240" src="@/assets/finance.png" />
         <v-card class="text-center">
-          <p class="headline"> Estaremos ansiosos pela sua próxima visita! </p>
+          <p class="headline">Estaremos ansiosos pela sua próxima visita!</p>
           <v-card-text>
             <h2>Tem certeza que deseja finalizar sessão?</h2>
             <p class="ma-10">

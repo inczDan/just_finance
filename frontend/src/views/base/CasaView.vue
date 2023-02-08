@@ -15,9 +15,6 @@
             <v-list-item @click="addNote">
               <v-list-item-title>Adicionar Nova Anotação</v-list-item-title>
             </v-list-item>
-            <v-list-item @click="viewNotes">
-              <v-list-item-title>Visualizar Anotações</v-list-item-title>
-            </v-list-item>
           </v-list>
         </v-menu>
       </v-col>
@@ -28,7 +25,7 @@
         </v-btn>
         <div v-if="showProfile" style="width: 200px">
           <v-card class="caixinha-btn">
-            <v-card-title class="headline">*nome usuario*</v-card-title>
+            <v-card-title class="headline"> {{ usuario.name }}</v-card-title>
             <v-card-actions>
               <v-list>
                 <v-list-item @click="visuPerfil">
@@ -51,7 +48,7 @@
   </v-container>
 </template>
 <script>
-import LoginView from "../accounts/LoginView.vue"
+// import LoginView from "../accounts/LoginView.vue"
 
 export default {
   data: () => ({
@@ -62,10 +59,6 @@ export default {
     addNote() {
       //  direciona pra pagina de criar notações
       this.$router.push("tasks/novanotacao")
-    },
-    viewNotes() {
-      // direciona p visualizar as anotações existentes
-      this.$router.push("/tasks/list")
     },
     toggleProfile() {
       this.showProfile = !this.showProfile
@@ -81,6 +74,20 @@ export default {
     },
   },
 }
+</script>
+
+<script setup>
+import { onMounted, ref } from "vue"
+import axios from "axios"
+
+const usuario = ref({})
+
+onMounted(() => {
+  axios.get("http://localhost/api/accounts/whoami").then((response) => {
+    console.log(response.data.user)
+    usuario.value = response.data.user
+  })
+})
 </script>
 
 <style>

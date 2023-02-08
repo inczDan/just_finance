@@ -6,35 +6,21 @@
         <v-card-title class="headline">Realize seu cadastro </v-card-title>
         <v-card-text>
           <v-form ref="form">
-        <v-text-field
-          label="Nome"
-          v-model="name"
-          :rules="nameRules"
-        />
-        <v-text-field
-          label="Email"
-          v-model="email"
-          :rules="emailRules"
-        />
-        <v-text-field
-          label="Senha"
-          type="password"
-          v-model="password"
-          :rules="passwordRules"
-        />
-        <v-text-field
-          label="Confirme a Senha"
-          type="password"
-          v-model="confirmPassword"
-          :rules="confirmPasswordRules"
-        />
-        <v-card-actions></v-card-actions>
-        <div class="ajuste-btn">
-          <v-btn @click="resgister"  :to="{name: 'accounts-login'}" color="blue"> Registrar </v-btn>
-          <v-btn color="blue" :to="{ name: 'base-home' }"> Início </v-btn>
-        </div>
-        <hr class="my-3" />
-      </v-form>
+            <v-text-field v-model="name" label="Nome" :rules="nameRules" />
+            <v-text-field v-model="email" label="Email" :rules="emailRules" />
+            <v-text-field v-model="password" label="Senha" type="password" :rules="passwordRules" />
+            <v-text-field
+              v-model="confirmPassword"
+              label="Confirme a Senha"
+              type="password"
+              :rules="confirmPasswordRules" />
+            <v-card-actions></v-card-actions>
+            <div class="ajuste-btn">
+              <v-btn color="blue" @click="resgister"> Registrar </v-btn>
+              <v-btn color="blue" :to="{ name: 'base-home' }"> Início </v-btn>
+            </div>
+            <hr class="my-3" />
+          </v-form>
         </v-card-text>
       </v-card>
     </v-responsive>
@@ -42,55 +28,49 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios"
 
 export default {
   data: () => ({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    nameRules: [
-      v => !!v || 'Nome é obrigatório',
-    ],
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    nameRules: [(v) => !!v || "Nome é obrigatório"],
     emailRules: [
-      email => !!email || 'Email é obrigatório',
-      v => /.+@.+\..+/.test(v) || 'Email inválido',
+      (email) => !!email || "Email é obrigatório",
+      (v) => /.+@.+\..+/.test(v) || "Email inválido",
     ],
-    passwordRules: [
-      v => !!v || 'Senha é obrigatória',
-    ],
+    passwordRules: [(v) => !!v || "Senha é obrigatória"],
     confirmPasswordRules: [
-      v => !!v || 'Confirme a senha',
-      v => v === this.password || 'Senhas não coincidem',
+      (v) => !!v || "Confirme a senha",
+      (v) => v === this.password || "Senhas não coincidem",
     ],
   }),
   methods: {
-    async register() {
+    async register(request) {
       if (this.$refs.form.validate()) {
         try {
           // lembrar desse endpoint na hora do django
-          const response = await axios.post('/api/register', {
+          const response = axios.post("api/accounts/register", {
             name: this.name,
             email: this.email,
             password: this.password,
-          });
-          this.$router.push({ name: "accounts-login" });
-        } catch(error){
-
-        }
+          })
+          this.$router.push({ name: "accounts-login" })
+        } catch (error) {}
       }
     },
   },
-};
+}
 </script>
 
 <style>
-.ajuste-btn{
+.ajuste-btn {
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-evenly;
-  width:100%;
+  width: 100%;
   max-width: 100%;
 }
 </style>
