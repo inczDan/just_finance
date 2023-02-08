@@ -16,7 +16,7 @@
               :rules="confirmPasswordRules" />
             <v-card-actions></v-card-actions>
             <div class="ajuste-btn">
-              <v-btn color="blue" @click="resgister"> Registrar </v-btn>
+              <v-btn color="blue" @click="register()"> Registrar </v-btn>
               <v-btn color="blue" :to="{ name: 'base-home' }"> Início </v-btn>
             </div>
             <hr class="my-3" />
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import axios from "axios"
+import AccountsApi from "@/api/accounts.api.js"
 
 export default {
   data: () => ({
@@ -48,17 +48,18 @@ export default {
     ],
   }),
   methods: {
-    async register(request) {
+    register() {
       if (this.$refs.form.validate()) {
         try {
-          // lembrar desse endpoint na hora do django
-          const response = axios.post("api/accounts/register", {
+          // Lembrar desse endpoint na hora do Django
+          AccountsApi.getregister({
             name: this.name,
             email: this.email,
             password: this.password,
           })
-          this.$router.push({ name: "accounts-login" })
-        } catch (error) {}
+        } catch (error) {
+          console.error("Erro ao registrar usuário:", error)
+        }
       }
     },
   },

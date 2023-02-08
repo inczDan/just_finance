@@ -38,4 +38,16 @@ export default {
         })
     })
   },
+  getregister: () => {
+    return new Promise((resolve, reject) => {
+      api
+        .post("/api/accounts/getstarted")
+        .then((response) => {
+          return resolve(response.data)
+        })
+        .catch((error) => {
+          return reject(error)
+        })
+    })
+  },
 }

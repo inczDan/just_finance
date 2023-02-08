@@ -63,7 +63,8 @@ def _user2dict(user):
     return d
 
 
-def register(request):
+@csrf_exempt
+def getstarted(request):
     if request.method == 'POST':
         name = request.POST["name"]
         email = request.POST["email"]
@@ -83,9 +84,7 @@ def register(request):
             password=make_password(password)
         )
         user.save()
-        log_svc.log_register(user)
-        return JsonResponse({'success': 'Usuário criado com sucesso.'})
-    return JsonResponse({'error': 'Método não permitido.'})
+    return JsonResponse({'success': 'Usuário criado com sucesso.'})
 
 
 
