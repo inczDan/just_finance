@@ -94,6 +94,8 @@ def getstarted(request):
         return JsonResponse({'error': 'Metodo não suportado.'})
 
 
+def novanotacao(request):
+    pass
 
 
 

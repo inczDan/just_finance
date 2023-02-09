@@ -51,6 +51,7 @@
   <div class="ajusta-btn">
     <v-btn color="blue" @click="dialog = true">Adicionar anotação</v-btn>
     <v-btn class="btn-apagar" color="red" @click="deleteSelected">Apagar selecionados</v-btn>
+    <v-btn color="blue" :to="{ name: 'base-casinha' }">Voltar</v-btn>
   </div>
 </template>
 
@@ -68,7 +69,6 @@ export default {
   },
   methods: {
     addLinha() {
-      // Verifica se o formulário é válido
       if (this.$refs.form.validate()) {
         // Adiciona a nova linha à lista de linhas
         this.linhas.push({
@@ -120,11 +120,12 @@ th {
 }
 .ajusta-btn {
   display: flex;
+  width: 70%;
   align-items: flex-end;
-  justify-content: space-around;
+  justify-content: space-evenly;
   position: fixed;
   bottom: 10%;
-  left: 34%;
+  left: 15%;
   padding: 0.5%;
 }
 </style>
