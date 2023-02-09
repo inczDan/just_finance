@@ -25,7 +25,7 @@
         </v-btn>
         <div v-if="showProfile" style="width: 200px">
           <v-card class="caixinha-btn">
-            <v-card-title class="headline"> {{ usuario.user }}</v-card-title>
+            <v-card-title class="headline"> {{ userName }}</v-card-title>
             <v-card-actions>
               <v-list>
                 <v-list-item @click="visuPerfil">
@@ -52,8 +52,9 @@
 
 export default {
   data: () => ({
-    showProfile: false,
+    showProfile: false,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
     showNovaAnotation: false,
+    userName: "",
   }),
   methods: {
     addNote() {
@@ -73,12 +74,19 @@ export default {
       this.$router.push("profile")
     },
   },
+  onMounted()=>{
+    accountsApi.whoami().then((response)=>{
+      if (response.authenticated){
+        this.userName = response.user.username
+      }
+  }
 }
 </script>
 
 <script setup>
 import { onMounted, ref } from "vue"
 import axios from "axios"
+import accountsApi from "@/api/accounts.api"
 
 const usuario = ref({})
 
