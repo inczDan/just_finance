@@ -29,8 +29,16 @@
 
 <script>
 import AccountsApi from "@/api/accounts.api.js"
+import { useAppStore } from "@/stores/appStore"
+import { useAccountsStore } from "@/stores/accountsStore"
+import { responseError } from "@/api/config"
 
 export default {
+  setup() {
+    const appStore = useAppStore()
+    const accountsStore = useAccountsStore()
+    return { appStore, accountsStore }
+  },
   data: () => ({
     username: "",
     email: "",
@@ -53,9 +61,9 @@ export default {
         AccountsApi.getregister(this.username, this.email, this.password)
           .then((response) => {
             if (response.error) {
-              console.error("Erro ao registrar usuário:", response.error)
+              this.appStore.showSnackbar("Erro ao registrar usuario", responseError)
             } else if (response.success) {
-              this.$router.push({ name: "base-casinha" })
+              this.$router.push({ name: "accounts-login" })
               console.log("Usuário registrado com sucesso.")
             }
           })

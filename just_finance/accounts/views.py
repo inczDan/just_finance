@@ -1,16 +1,20 @@
 # coding: utf-8
+
+#python ./manage.py shell
+#importamos  a parte do user e começamos a ver o que tem de bom no banco (jeito rapido)
+
+
 import json
 from django.http import JsonResponse
 from django.contrib import auth
 from django.views.decorators.csrf import csrf_exempt
 
 from django.contrib.auth.models import User
-from django.contrib.auth.hashers import make_password
+
 
 
 
 from ..tasks.service import log_svc
-
 
 @csrf_exempt
 def login(request):
@@ -24,6 +28,7 @@ def login(request):
             log_svc.log_login(request.user)
             user_dict = _user2dict(user)
     return JsonResponse(user_dict, safe=False)
+
 
 
 def logout(request):
@@ -71,22 +76,17 @@ def getstarted(request):
         email = user_input.get("email")
         password = user_input.get("password")
 
-        # Verificar se todos os dados foram enviados
+        # Verificar se todos os dados foram preenchidos
         if not username or not email or not password:
             return JsonResponse({'error': 'Todos os dados são obrigatórios.'})
 
         # bisu se o email já está em uso
         if User.objects.filter(email=email).exists():
             return JsonResponse({'error': 'Email já está sendo usado.'})
-
-        # bisu se o usuário já existe
-        if User.objects.filter(username=username).exists():
-            return JsonResponse({'error': 'Nome de usuário já existe.'})
-
         user = User.objects.create_user(
             username=username,
             email=email,
-            password=make_password(password)
+            password= password
         )
         user.save()
         return JsonResponse({'success': 'Usuário criado com sucesso.'})

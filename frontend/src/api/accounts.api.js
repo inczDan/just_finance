@@ -19,7 +19,11 @@ export default {
       api
         .post("/api/accounts/login", apiHelpers.dataToForm({ username, password }))
         .then((response) => {
-          return resolve(response.data)
+          if (response.status === 200) {
+            return resolve(response.data)
+          } else {
+            return reject(new Error("Autenticação falhou"))
+          }
         })
         .catch((error) => {
           return reject(error)

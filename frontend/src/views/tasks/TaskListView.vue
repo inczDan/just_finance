@@ -2,7 +2,7 @@
   <v-container class="fill-height">
     <v-row justify="center" align="center">
       <v-col cols="12">
-        <v-btn :to="{name: 'casinha'}">Voltar</v-btn>
+        <v-btn :to="{ name: 'base-casinha' }">Voltar</v-btn>
         <v-card>
           <v-card-title class="headline"> Tasks </v-card-title>
         </v-card>

@@ -25,7 +25,7 @@
         </v-btn>
         <div v-if="showProfile" style="width: 200px">
           <v-card class="caixinha-btn">
-            <v-card-title class="headline"> {{ usuario.name }}</v-card-title>
+            <v-card-title class="headline"> {{ usuario.user }}</v-card-title>
             <v-card-actions>
               <v-list>
                 <v-list-item @click="visuPerfil">

@@ -8,5 +8,5 @@ urlpatterns = [
     path('logout', views.logout),
     path('whoami', views.whoami),
     path('getstarted', views.getstarted)
-    # path('danielzin',views.danielzin)
+    
 ]

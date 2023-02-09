@@ -7,7 +7,7 @@
         <v-form>
           <v-text-field
             v-model="username"
-            label="E-Mail"
+            label="Usuario"
             prepend-inner-icon="mdi-email-fast-outline"
             variant="outlined"
             required
@@ -88,7 +88,7 @@ export default {
       AccountsApi.login(this.username, this.password)
         .then((response) => {
           if (!response) {
-            this.appStore.showSnackbar("Usuário ou senha invalida", "danger")
+            this.appStore.showSnackbar("Usuario ou senha invalida", "danger")
             return
           }
           this.saveLoggedUser(response.user)
