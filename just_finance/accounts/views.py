@@ -75,7 +75,7 @@ def getstarted(request):
         username = user_input.get("username")
         email = user_input.get("email")
         password = user_input.get("password")
-
+        #easter egg {se voce leu até aqui, bora comer pastel}
         # Verificar se todos os dados foram preenchidos
         if not username or not email or not password:
             return JsonResponse({'error': 'Todos os dados são obrigatórios.'})
@@ -96,9 +96,3 @@ def getstarted(request):
 
 def novanotacao(request):
     pass
-
-
-
-
-# def danielzin(request):
-#     return JsonResponse({"nome": "daniel"})

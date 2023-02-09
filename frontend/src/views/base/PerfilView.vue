@@ -29,9 +29,9 @@
     </v-row>
     <v-col class="d-flex align-center justify-center">
       <v-card class="elevation-12">
-        <v-card-title class="headline">Nome:{{ userName }} Daniel Alves Matos</v-card-title>
+        <v-card-title class="headline">Nome: {{ userName }} </v-card-title>
         <v-card-text>
-          <p>Email: {{ userEmail }} daniel.matos@gmail.com</p>
+          <p>Email: {{ userEmail }}</p>
         </v-card-text>
       </v-card>
     </v-col>
@@ -39,6 +39,8 @@
 </template>
 
 <script>
+import accountsApi from "@/api/accounts.api"
+
 export default {
   data() {
     return {
@@ -46,6 +48,14 @@ export default {
       userEmail: "",
       profilePicture: "",
     }
+  },
+  mounted() {
+    accountsApi.whoami().then((response) => {
+      if (response.authenticated) {
+        this.userName = response.user.username
+        this.userEmail = response.user.email
+      }
+    })
   },
   methods: {
     sobeFoto(event) {

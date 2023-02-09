@@ -49,9 +49,9 @@
     </div>
   </div>
   <div class="ajusta-btn">
+    <v-btn color="blue" :to="{ name: 'base-casinha' }">Voltar</v-btn>
     <v-btn color="blue" @click="dialog = true">Adicionar anotação</v-btn>
     <v-btn class="btn-apagar" color="red" @click="deleteSelected">Apagar selecionados</v-btn>
-    <v-btn color="blue" :to="{ name: 'base-casinha' }">Voltar</v-btn>
   </div>
 </template>
 
