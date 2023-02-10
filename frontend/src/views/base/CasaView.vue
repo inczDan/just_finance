@@ -49,10 +49,11 @@
 </template>
 <script>
 // import LoginView from "../accounts/LoginView.vue"
+import accountsApi from "@/api/accounts.api"
 
 export default {
   data: () => ({
-    showProfile: false,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+    showProfile: false,
     showNovaAnotation: false,
     userName: "",
   }),
@@ -74,19 +75,19 @@ export default {
       this.$router.push("profile")
     },
   },
-  onMounted()=>{
-    accountsApi.whoami().then((response)=>{
-      if (response.authenticated){
+  onMounted() {
+    accountsApi.whoami().then((response) => {
+      if (response.authenticated) {
         this.userName = response.user.username
       }
-  }
+    })
+  },
 }
 </script>
 
 <script setup>
 import { onMounted, ref } from "vue"
 import axios from "axios"
-import accountsApi from "@/api/accounts.api"
 
 const usuario = ref({})
 

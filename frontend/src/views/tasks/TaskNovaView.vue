@@ -11,7 +11,7 @@
         <v-card-text>
           <v-form ref="form">
             <v-text-field v-model="nome" label="Nome" />
-            <v-text-field v-model="valor" label="Valor em reais" type="number" />
+            <v-text-field v-model="valor_reais" label="Valor em reais" type="number" />
             <v-radio-group v-model="tipo" row>
               <v-radio label="Despesa" value="despesa" />
               <v-radio label="Receita" value="receita" />
@@ -22,7 +22,7 @@
         <v-card-actions>
           <v-spacer />
           <v-btn color="blue darken-1" text @click="dialog = false">Cancelar</v-btn>
-          <v-btn color="blue darken-1" text @click="addLinha">Adicionar</v-btn>
+          <v-btn color="blue darken-1" text @click="createNote, (dialog = false)">Adicionar</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -56,34 +56,50 @@
 </template>
 
 <script>
+import api from "@/api/tasks.api"
+// import axios from "axios"
+
 export default {
   data() {
     return {
       dialog: false,
       selectAll: false,
       nome: "",
-      valor: "",
+      valor_reais: "",
       tipo: "",
       linhas: [],
     }
   },
+  mounted() {
+    this.fetchNotes()
+  },
   methods: {
-    addLinha() {
+    createNote() {
       if (this.$refs.form.validate()) {
-        // Adiciona a nova linha à lista de linhas
-        this.linhas.push({
-          nome: this.nome,
-          valor: this.valor,
-          tipo: this.tipo,
-        })
-        // Limpa os campos do formulário
-        this.nome = ""
-        this.valor = ""
-        this.tipo = ""
-
-        // Fecha a janela modal
-        this.dialog = false
+        api
+          .createNot(this.nome, this.valor_reais, this.tipo)
+          .then((response) => {
+            this.nome = ""
+            this.valor = ""
+            this.tipo = ""
+            console.log(response.data)
+            this.dialog = false
+          })
+          .catch((error) => {
+            console.error(error)
+          })
       }
+    },
+    fetchNotes() {
+      debugger
+      api
+        .getTasks()
+        .then((response) => {
+          this.linhas = response
+        })
+        .catch((error) => {
+          console.error(error)
+        })
     },
   },
 }
