@@ -22,7 +22,9 @@
         <v-card-actions>
           <v-spacer />
           <v-btn color="blue darken-1" text @click="dialog = false">Cancelar</v-btn>
-          <v-btn color="blue darken-1" text @click="createNote, (dialog = false)">Adicionar</v-btn>
+          <v-btn color="blue darken-1" text @click="createNote(), (dialog = false)"
+            >Adicionar</v-btn
+          >
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -41,7 +43,7 @@
           <tr v-for="linha in linhas" :key="linha.nome">
             <td><v-checkbox v-model="linha.selected"></v-checkbox></td>
             <td>{{ linha.nome }}</td>
-            <td>{{ linha.valor }}</td>
+            <td>{{ linha.valor_reais }}</td>
             <td>{{ linha.tipo }}</td>
           </tr>
         </tbody>
@@ -79,9 +81,6 @@ export default {
         api
           .createNot(this.nome, this.valor_reais, this.tipo)
           .then((response) => {
-            this.nome = ""
-            this.valor = ""
-            this.tipo = ""
             console.log(response.data)
             this.dialog = false
           })
@@ -91,11 +90,10 @@ export default {
       }
     },
     fetchNotes() {
-      debugger
       api
-        .getTasks()
+        .getTasks(this.nome, this.valor_reais, this.tipo)
         .then((response) => {
-          this.linhas = response
+          this.linhas = response.data
         })
         .catch((error) => {
           console.error(error)

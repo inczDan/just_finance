@@ -31,20 +31,28 @@ export default {
     })
   },
   createNot: (nome, valor_reais, tipo, user) => {
-    return new Promise((resolve, reject) => {
-      api
-        .post("/api/tasks/save", {
-          nome: nome,
-          valor_reais: valor_reais,
-          tipo: tipo,
-          user: user,
-        })
-        .then((response) => {
-          return resolve(response.data)
-        })
-        .catch((error) => {
-          return reject(error)
-        })
-    })
+    return api
+      .post("/api/tasks/save", {
+        nome: nome,
+        valor_reais: valor_reais,
+        tipo: tipo,
+        user: user,
+      })
+      .then((response) => {
+        return response.data
+      })
+      .catch((error) => {
+        return error
+      })
   },
+  // createNot: (nome, valor_reais, tipo) => {
+  //   return api
+  //     .post("/api/tasks/save", apiHelpers.dataToForm({ nome, valor_reais, tipo }))
+  //     .then((response) => {
+  //       return response.data
+  //     })
+  //     .catch((error) => {
+  //       return error
+  //     })
+  // },
 }
