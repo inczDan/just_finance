@@ -9,11 +9,6 @@ def add_todo(new_task):
     return todo.to_dict_json()
 
 
-def list_todos():
-    user = request.user
-    notes = Note.objects.filter(user=user)
-    return [note.to_dict_json() for note in notes]
-
-def list_notes():
-    notes = Note.objects.all()
+def list_notes(request):
+    notes = Note.objects.filter(user=request.user)
     return [note.to_dict_json() for note in notes]

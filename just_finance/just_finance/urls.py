@@ -22,5 +22,5 @@ urlpatterns = [
     path("api", include("just_finance.base.urls")),
     path("api/accounts/", include("just_finance.accounts.urls")),
     path("api/tasks/", include("just_finance.tasks.urls")),
-]   
-
+    # path('api/profile/', include("just_finance.update_profile_picture.urls")),
+]

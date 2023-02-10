@@ -1,5 +1,5 @@
+import { updateProfilePicture } from "@/api/accounts.api"
 <template>
-  <!-- <template> -->
   <v-col cols="1">
     <v-btn
       block
@@ -11,7 +11,6 @@
       <v-icon>mdi-arrow-left</v-icon>
     </v-btn>
   </v-col>
-  <!-- </template> -->
   <v-container>
     <v-row align="center" no-gutters>
       <v-col cols="12" class="d-flex align-center justify-center">
@@ -39,6 +38,7 @@
 </template>
 
 <script>
+import updateProfilePicture from "@/api/accounts.api"
 import accountsApi from "@/api/accounts.api"
 
 export default {
@@ -64,8 +64,17 @@ export default {
         const reader = new FileReader()
         reader.onload = (e) => {
           this.profilePicture = e.target.result
+          this.saveProfilePicture()
         }
         reader.readAsDataURL(input.files[0])
+      }
+    },
+    async saveProfilePicture() {
+      try {
+        const response = await updateProfilePicture(this.picture)
+        console.log(response)
+      } catch (error) {
+        console.error(error)
       }
     },
   },

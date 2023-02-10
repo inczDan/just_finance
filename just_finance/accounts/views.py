@@ -8,6 +8,10 @@ import json
 from django.http import JsonResponse
 from django.contrib import auth
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
+from django.core.files.base import ContentFile
+import base64
+import uuid
 
 from django.contrib.auth.models import User
 
@@ -93,4 +97,21 @@ def getstarted(request):
     else:
         return JsonResponse({'error': 'Metodo não suportado.'})
 
+
+@login_required
+def update_profile_picture(request):
+    if request.method == 'PATCH':
+        image_data = request.POST.get('picture')
+        format, imgstr = image_data.split(';base64,')
+        ext = format.split('/')[-1]
+
+        picture_file = ContentFile(base64.b64decode(imgstr), name=str(uuid.uuid4()) + '.' + ext)
+        request.user.profile. picture.save('profile_ picture.' + ext, picture_file)
+        return JsonResponse({'success': True})
+    else:
+        return JsonResponse({'error': 'request inválido.'})
+
+
+def novanotacao(request):
+    pass
 

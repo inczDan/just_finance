@@ -39,11 +39,5 @@ def save_nota(request):
         return JsonResponse({'sucess': True})
 
 def mostra_nota(request):
-  notes = todo_svc.list_notes()
+  notes = todo_svc.list_notes(request)
   return JsonResponse({"notes":notes})
-
-        
-
-def view_notes(request):
-    notes = todo_svc.list_todos()
-    return JsonResponse({"notes": notes})

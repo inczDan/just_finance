@@ -2,23 +2,6 @@ import api from "./config.js"
 import apiHelpers from "./helpers.js"
 
 export default {
-  getTasks: (nome, valor_reais, tipo) => {
-    return new Promise((resolve, reject) => {
-      api
-        .get("/api/tasks/mostra", {
-          nome: nome,
-          valor_reais: valor_reais,
-          tipo: tipo,
-        })
-        .then((response) => {
-          return resolve(response.data)
-        })
-        .catch((error) => {
-          return reject(error)
-        })
-    })
-  },
-
   getNotes: () => {
     return new Promise((resolve, reject) => {
       api

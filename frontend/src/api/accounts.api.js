@@ -1,7 +1,16 @@
 import api from "./config.js"
 import apiHelpers from "./helpers.js"
+import axios from "axios"
+
+const updateProfilePicture = (picture) => {
+  if (!picture) {
+    throw new Error("A imagem do perfil não foi definida")
+  }
+  return axios.patch("/api/accounts/profile/", { picture }).then((response) => response.data)
+}
 
 export default {
+  updateProfilePicture,
   whoami: () => {
     return new Promise((resolve, reject) => {
       api
@@ -58,5 +67,4 @@ export default {
         })
     })
   },
-  // novanotacao: ()
 }
