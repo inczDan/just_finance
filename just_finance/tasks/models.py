@@ -30,3 +30,24 @@ class Todo(models.Model):
             'description': self.description,
             'done': self.done,
         }
+
+
+class Note(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    nome = models.CharField(max_length=50)
+    valor_reais = models.DecimalField(max_digits=10, decimal_places=2)
+    tipo = models.CharField(max_length=10, choices=[('DESPESA', 'despesa'), ('RECEITA', 'receita')])
+
+    def __str__(self):
+       return self.nome
+
+
+def to_dict_json(self):
+    return {
+        "id":self.id,
+        "nome": self.nome,
+        "valor_reais": self.valor_reais,
+        "tipo": self.tipo,
+
+
+    }
