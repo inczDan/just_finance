@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from ..commons.django_views_utils import ajax_login_required
 from .service import todo_svc
 from .models import Note
+from django.shortcuts import get_object_or_404, HttpResponse
 
 
 @csrf_exempt
@@ -41,3 +42,16 @@ def save_nota(request):
 def mostra_nota(request):
   notes = todo_svc.list_notes(request)
   return JsonResponse({"notes":notes})
+
+
+# def delete_note(request, pk):
+#     note = get_object_or_404(Note, pk=pk)
+#     note.delete()
+#     return HttpResponse(status=204)
+@csrf_exempt
+@login_required
+def delete_notes(request):
+    if request.method == "DELETE":
+        body = json.loads(request.body)
+        Note.objects.filter(id__in=body["ids"]).delete()
+        return JsonResponse({"message": "Notas deletadas com sucesso"})

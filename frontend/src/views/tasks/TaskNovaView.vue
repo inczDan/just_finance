@@ -53,13 +53,11 @@
   <div class="ajusta-btn">
     <v-btn color="blue" :to="{ name: 'base-casinha' }">Voltar</v-btn>
     <v-btn color="blue" @click="dialog = true">Adicionar anotação</v-btn>
-    <v-btn class="btn-apagar" color="red" @click="deleteSelected">Apagar selecionados</v-btn>
+    <v-btn class="btn-apagar" color="red" @click="deleteSelected">Apagar selecionado</v-btn>
   </div>
 </template>
-
 <script>
 import api from "@/api/tasks.api"
-// import axios from "axios"
 
 export default {
   data() {
@@ -83,6 +81,7 @@ export default {
           .then((response) => {
             console.log(response.data)
             this.dialog = false
+            this.fetchNotes()
           })
           .catch((error) => {
             console.error(error)
@@ -92,6 +91,14 @@ export default {
     async fetchNotes() {
       const data = await api.getNotes()
       this.linhas = data.notes
+    },
+    async deleteSelected() {
+      let selectedNotes = this.linhas.filter((linha) => linha.selected)
+      if (selectedNotes.length > 0) {
+        let deletedNotes = await api.deleteNotes(selectedNotes)
+        console.log(deletedNotes.data)
+        this.fetchNotes()
+      }
     },
   },
 }

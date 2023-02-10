@@ -1,4 +1,5 @@
 import api from "./config.js"
+import axios from "axios"
 import apiHelpers from "./helpers.js"
 
 export default {
@@ -42,14 +43,8 @@ export default {
         return error
       })
   },
-  // createNot: (nome, valor_reais, tipo) => {
-  //   return api
-  //     .post("/api/tasks/save", apiHelpers.dataToForm({ nome, valor_reais, tipo }))
-  //     .then((response) => {
-  //       return response.data
-  //     })
-  //     .catch((error) => {
-  //       return error
-  //     })
-  // },
+  deleteNotes(selectedNotes) {
+    let ids = selectedNotes.map((note) => note.id)
+    return axios.delete("/api/tasks/delete_notes", { data: { ids: ids } })
+  },
 }

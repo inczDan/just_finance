@@ -12,3 +12,6 @@ def add_todo(new_task):
 def list_notes(request):
     notes = Note.objects.filter(user=request.user)
     return [note.to_dict_json() for note in notes]
+
+# def apagar_notes(request, id):
+#     notes = Note.objects.filter()
