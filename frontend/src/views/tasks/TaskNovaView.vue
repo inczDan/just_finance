@@ -89,15 +89,9 @@ export default {
           })
       }
     },
-    fetchNotes() {
-      api
-        .getTasks(this.nome, this.valor_reais, this.tipo)
-        .then((response) => {
-          this.linhas = response.data
-        })
-        .catch((error) => {
-          console.error(error)
-        })
+    async fetchNotes() {
+      const data = await api.getNotes()
+      this.linhas = data.notes
     },
   },
 }

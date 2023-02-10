@@ -18,6 +18,20 @@ export default {
         })
     })
   },
+
+  getNotes: () => {
+    return new Promise((resolve, reject) => {
+      api
+        .get("/api/tasks/mostra")
+        .then((response) => {
+          return resolve(response.data)
+        })
+        .catch((error) => {
+          return reject(error)
+        })
+    })
+  },
+
   addNewTask: (description) => {
     return new Promise((resolve, reject) => {
       api

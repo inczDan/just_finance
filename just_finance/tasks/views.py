@@ -39,15 +39,8 @@ def save_nota(request):
         return JsonResponse({'sucess': True})
 
 def mostra_nota(request):
-    if request.content_type == 'application/json':
-        data = json.loads(request.body)
-    else:
-        data = request.POST
-
-    nome = data.get("nome")
-    valor_reais = data.get("valor_reais")
-    tipo = data.get("tipo")
-    return JsonResponse({"nome": nome, "valor_reais": valor_reais, "tipo": tipo})
+  notes = todo_svc.list_notes()
+  return JsonResponse({"notes":notes})
 
         
 

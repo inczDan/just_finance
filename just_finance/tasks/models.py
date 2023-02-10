@@ -42,12 +42,10 @@ class Note(models.Model):
        return self.nome
 
 
-def to_dict_json(self):
-    return {
-        "id":self.id,
-        "nome": self.nome,
-        "valor_reais": self.valor_reais,
-        "tipo": self.tipo,
-
-
-    }
+    def to_dict_json(self):
+        return {
+            "id":self.id,
+            "nome": self.nome,
+            "valor_reais": self.valor_reais,
+            "tipo": self.tipo,
+        }
