@@ -52,7 +52,5 @@ def mostra_nota(request):
         
 
 def view_notes(request):
-    user = request.user
-    notes = Note.objects.filter(user=user)
-    context = {'notes':notes}
-    return [note.to_dict_json() for note in notes]
+    notes = todo_svc.list_todos()
+    return JsonResponse({"notes": notes})

@@ -1,4 +1,6 @@
-from ..models import Todo
+from urllib import request
+from ..models import Todo , Note
+
 
 
 def add_todo(new_task):
@@ -8,5 +10,6 @@ def add_todo(new_task):
 
 
 def list_todos():
-    todos = Todo.objects.all()
-    return [todo.to_dict_json() for todo in todos]
+    user = request.user
+    notes = Note.objects.filter(user=user)
+    return [note.to_dict_json() for note in notes]
