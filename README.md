@@ -1,4 +1,12 @@
-# 1. Dev-env, super-easy mode (docker all things)
+# Bem vindo ao Just Finance, seu mais novo organizador finnceiro.
+No link a seguir, voce pode ver uma breve introdução sobre a ideia e os rabiscos de criação haha.
+https://drive.google.com/drive/u/0/folders/1-exYFi583pFJUZiREIW5Cd0to4OxrGUm
+
+
+
+
+## Abaixo encontramos o passo a passo pra rodar o projeto. Qualquer duvida, sinta-se a vontade para entrar em contato.
+### 1. Dev-env, super-easy mode (docker all things)
 
 Requirements:
 - [Install docker](https://docs.docker.com/install/)
