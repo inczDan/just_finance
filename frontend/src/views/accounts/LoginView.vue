@@ -2,7 +2,9 @@
   <v-container>
     <v-row align="center" class="mt-10" no-gutters>
       <v-col cols="12" sm="6" offset-sm="3">
-        <v-img contain height="240" src="@/assets/finance.png" />
+        <div class="parallax-container">
+          <v-img class="parallax" src="@/assets/finance.png" />
+        </div>
         <v-sheet class="pa-2"> <h1>Login</h1> </v-sheet>
         <v-form>
           <v-text-field
@@ -113,3 +115,19 @@ export default {
   },
 }
 </script>
+
+<style>
+.parallax-container {
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+}
+.parallax {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 100%;
+  height: 100%;
+}
+</style>

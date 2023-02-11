@@ -52,8 +52,7 @@ export default {
     passwordRules: [(v) => !!v || "Senha é obrigatória"],
     confirmPasswordRules: [
       (v) => !!v || "Confirme a senha",
-      //easter egg {se voce leu até aqui, bora comer coxinha}
-      (v) => v === this.password || "Senhas não coincidem",
+      (v) => (this.password.length === v.length && this.password === v) || "Senhas não coincidem",
     ],
   }),
   methods: {

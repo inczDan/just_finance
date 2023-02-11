@@ -41,9 +41,7 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="10">
-        Aqui você pode visualizar os resumos das suas anotações com gráficos.
-      </v-col>
+      <v-col cols="10"> Aqui você pode visualizar os resumos das suas anotações. </v-col>
     </v-row>
   </v-container>
 </template>
