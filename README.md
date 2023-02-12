@@ -1,4 +1,4 @@
-# Bem vindo ao Just Finance, seu mais novo organizador finnceiro.
+# Bem vindo ao Just Finance, seu mais novo organizador financeiro.
 No link a seguir, voce pode ver uma breve introdução sobre a ideia e os rabiscos de criação haha.
 (https://drive.google.com/drive/u/1/folders/1QJm62bx1igPGWpe_TpruYRYvmkXezcnz)
 
