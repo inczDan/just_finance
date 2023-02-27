@@ -22,13 +22,11 @@ Este é um template de projetos Vue que precisa do vue-cli.
 
 Neste exemplo, vamos criar o projeto Just Finance, mas você pode trocar este nome para qual faz mais sentido para seu produto!
 
-Primeiro passo
-Vamos precisar criar o projeto e fazer o build de tudo, utilize os comandos abaixo:
+Primeiros passos
+Após clonar o repo, vamos prosseguir com os passos abaixo:
 
 # Digite o comando abaixo, caso ainda não tenha o comando vue
 $ npm install -g @vue/cli
-# Crie o novo projeto usando o vue init
-$ vue init inczDan/just_finance <nome_de_preferencia> 
 $ cd just_finance
 # Para criar os containers
 $ docker-compose build
@@ -45,6 +43,9 @@ a72fb2ab3ba2   back-todoten           "wait-for-it localho…"  mytodolist_backe
 
 Caso o backend nao fique "de pé", rode ele em um terminal a parte com o comando padrao 'python manage.py runserver'
 
+Isso já será suficiente para acessar o localhost no seu navegador e conseguir utilizar a aplicação incluindo front, back e bd.
+
+------------------------------------------------------------------------------------------------------------------------------
 Estes containers estão organizados como no diagrama abaixo:
 
 djavue-containers
