@@ -52,7 +52,7 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-    <div class="table-container" color="blue">
+    <div class="table-container py-4" color="blue">
       <table class="table">
         <thead>
           <tr>
@@ -72,11 +72,11 @@
         </tbody>
       </table>
     </div>
-  </div>
-  <div class="ajusta-btn">
-    <v-btn color="blue" :to="{ name: 'base-home' }">Voltar</v-btn>
-    <v-btn color="blue" @click="dialog = true">Adicionar anotação</v-btn>
-    <v-btn class="btn-apagar" color="red" @click="deleteSelected">Apagar selecionado</v-btn>
+    <div class="d-flex justify-space-evenly align-self-end">
+      <v-btn color="blue" :to="{ name: 'base-home' }">Voltar</v-btn>
+      <v-btn color="blue" @click="dialog = true">Adicionar anotação</v-btn>
+      <v-btn class="btn-apagar" color="red" @click="deleteSelected">Apagar selecionado</v-btn>
+    </div>
   </div>
   </v-container>
 </div>
@@ -221,15 +221,5 @@ th {
   display: flex;
   justify-content: flex-end;
   width: 206px;
-}
-.ajusta-btn {
-  display: flex;
-  width: 70%;
-  align-items: flex-end;
-  justify-content: space-evenly;
-  position: fixed;
-  bottom: 10%;
-  left: 15%;
-  padding: 0.5%;
 }
 </style>
