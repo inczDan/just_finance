@@ -33,7 +33,7 @@
     <v-dialog v-model="dialog" max-width="500px">
       <v-card>
         <v-card-text>
-          <v-form ref="form">
+          <v-form ref="form" method="post" id="form">
             <v-text-field v-model="nome" label="Nome" />
             <v-text-field v-model="valor_reais" label="Valor em reais" type="number" />
             <v-radio-group v-model="tipo" row>
@@ -125,6 +125,7 @@ export default {
             console.log(response.data)
             this.dialog = false
             this.fetchNotes()
+            document.getElementById("form").reset();
           })
           .catch((error) => {
             console.error(error)
